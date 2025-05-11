@@ -202,7 +202,7 @@ const Homepage = () => {
 							<div className="homepage-certification-item">
 								<FaAws className="certification-icon" />
 								<h3>AWS AI Practitioner</h3>
-								<p>Certification for AI and ML services on AWS.</p>
+								<p>Certification for foundational AI and ML services on AWS.</p>
 							</div>
 							<div className="homepage-certification-item">
 								<FaAws className="certification-icon" />
@@ -216,12 +216,12 @@ const Homepage = () => {
 							</div>
 							<div className="homepage-certification-item">
 								<FaMicrosoft className="certification-icon" />
-								<h3>Azure AZ-900</h3>
+								<h3>Microsoft certified Azure fundamentals</h3>
 								<p>Certification for Azure fundamentals.</p>
 							</div>
 							<div className="homepage-certification-item">
 								<FaMicrosoft className="certification-icon" />
-								<h3>Azure PL-900</h3>
+								<h3>Microsoft certified Power Platform fundamentals</h3>
 								<p>Certification for Power Platform fundamentals.</p>
 							</div>
 						</div>
