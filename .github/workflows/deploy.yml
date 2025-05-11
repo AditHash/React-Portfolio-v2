@@ -30,7 +30,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.DEPLOY_TOKEN }} # Use a custom secret for the GitHub token
+          personal_token: ${{ secrets.PERSONAL_TOKEN }} # Use a personal access token
           publish_dir: ./build
-          external_repository: AditHash/adithash.github.io # Optional, only if deploying to an external repository
+          external_repository: AditHash/adithash.github.io
           publish_branch: main
