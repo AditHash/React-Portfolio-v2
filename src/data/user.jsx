@@ -62,12 +62,13 @@ const INFO = {
 	hero: {
 		name: "Aditya Dey",
 		typewriterStrings: [
-			"Software Development Engineer",
+			"Software Engineer",
 			"ML Engineer",
 			"AI Engineer",
+			"Software Development Engineer",
 			"Backend Developer",
 			"Python Developer",
-			"MLops Engineer"
+			"MLops Engineer",
 		],
 		description:
 			"I am a Python Developer with a growing passion for solving real-world problems using AI and Machine Learning. I focus on developing intelligent solutions that blend code with creativity. My academic foundation has given me the technical depth and curiosity to continuously explore the evolving world of data and algorithms."
