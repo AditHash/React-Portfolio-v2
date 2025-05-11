@@ -1,0 +1,14 @@
+:root {
+	/* ------- colors ------- */
+	--primary-color: #000000;
+	--secondary-color: #021d3d;
+	--tertiary-color: #fc5400;
+	--quaternary-color: #036cf6;
+	--link-color: #62ff00;
+	/* ---------------------- */
+
+	/* ------- fonts ------- */
+	--primary-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--secondary-font: "Heebo", sans-serif;
+	/* --------------------- */
+}
