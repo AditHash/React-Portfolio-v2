@@ -131,9 +131,9 @@ const About = () => {
 											interval={3000} // Set auto-scroll interval to 3 seconds
 										>
 											<img src="about1.jpg" alt="about1" className="about-image" />
+											<img src="homepage.jpg" alt="about3" className="about-image" />
 											<img src="about2.jpg" alt="about2" className="about-image" />
 											<img src="about3.jpg" alt="about3" className="about-image" />
-											<img src="homepage.jpg" alt="about3" className="about-image" />
 										</Carousel>
 									</div>
 								</div>
