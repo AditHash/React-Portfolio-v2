@@ -31,6 +31,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }} # Use a personal access token
-          publish_dir: ./build
+          publish_dir: ./dist # Directory to publish
           external_repository: AditHash/adithash.github.io
           publish_branch: main
