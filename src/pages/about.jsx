@@ -133,8 +133,7 @@ const About = () => {
 											<img src="about1.jpg" alt="about1" className="about-image" />
 											<img src="about2.jpg" alt="about2" className="about-image" />
 											<img src="about3.jpg" alt="about3" className="about-image" />
-											{/* <img src="about4.jpg" alt="about3" className="about-image" /> */}
-											<img src="about.jpg" alt="about3" className="about-image" />
+											<img src="homepage.jpg" alt="about3" className="about-image" />
 										</Carousel>
 									</div>
 								</div>
