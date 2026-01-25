@@ -1,3 +1,16 @@
+import React from "react";
+import { Code2, Server, Database, Cloud, Terminal } from "lucide-react";
+import {
+    SiPython, SiFlask, SiFastapi, SiCplusplus, SiRust, SiJavascript,
+    SiMysql, SiPostgresql, SiMongodb, SiRedis,
+    SiDocker, SiNginx, SiGithubactions,
+    SiScikitlearn, SiPytorch
+} from "react-icons/si";
+import { FaAws, FaLinux, FaGit } from "react-icons/fa";
+
+// SiLangchain might be missing in some versions, using Terminal as fallback if needed or try import
+// If SiLangchain is not found, I will just use Terminal icon for it in the object below.
+
 const INFO = {
 	main: {
 		title: "Aditya's Portfolio",
@@ -11,38 +24,24 @@ const INFO = {
 		github: "https://github.com/AditHash",
 		linkedin: "https://www.linkedin.com/in/aditya-dey-b533681b8/",
 		instagram: "https://www.instagram.com/aditya.spx?igsh=MTEzbzdoeXBvMnE0Zg==",
-		// stackoverflow: "https://stackoverflow.com/",
-		// facebook: "https://facebook.com/",
 		steam: "https://steamcommunity.com/id/adityadragon/",
 	},
-//
-// 
-// 
-// I am a backend developer mainly working in python and node.js. I am passionate about AI/ML 
-//
-	// homepage: {
-	// 	greeting: "Hi, I am Aditya Dey",
-	// 	intro: "I am a",
-	// 	description:
-	// 		"I am a Python Developer with a growing passion for solving real-world problems using AI and Machine Learning. I focus on developing intelligent solutions that blend code with creativity. My academic foundation has given me the technical depth and curiosity to continuously explore the evolving world of data and algorithms.",
-	// },
+
 	homepage: {
 		greeting: "Hi, I am Aditya Dey",
-		intro: "I am a",
+		intro: "— a backend and systems-focused developer specializing in Python & C++.",
 		description:
-		  "I am a backend developer primarily working with Python and Node.js, with a strong focus on building scalable, efficient, and maintainable systems. Over the years, I’ve gained hands-on experience in designing RESTful APIs, managing databases, and integrating cloud services to support dynamic, data-driven applications. My deep interest in Artificial Intelligence and Machine Learning has led me to work on diverse projects involving supervised and unsupervised learning, deep neural networks, natural language processing, and most recently, Generative AI. I enjoy exploring the intersection of backend development and intelligent systems—where automation meets creativity and problem-solving becomes both technical and strategic.\n \n "+
-		  "Outside of coding, I'm deeply into photography. Feel free to check out my Instagram or browse through my personal gallery to see the world through my lens.\n\n" ,
-		// "When I'm not working or creating, you can probably find me grinding headshots in BGMI or CODM, raiding bases in Clash of Clans, doing missions in GTA, busting demons in DOOM, leaping off towers in Assassin’s Creed, running and gunning in Call of Duty, or EV training in Pokémon.",
-	  },
-	  
+		  "I build scalable APIs, smart backend services, and developer tools that help teams ship faster. My focus is on designing intelligent solutions that blend code with creativity, reducing friction in distributed systems, and pushing performance boundaries.\n\n" +
+          "Explore my work below or get in touch to collaborate.",
+	},
 
 	about: {
 		title: "I’m Aditya Dey. I am from Kolkata, India.",
 		description:
-		  "I am a backend developer primarily working with Python and Node.js, with a strong focus on building scalable, efficient, and maintainable systems. Over the years, I’ve gained hands-on experience in designing RESTful APIs, managing databases, and integrating cloud services to support dynamic, data-driven applications. My deep interest in Artificial Intelligence and Machine Learning has led me to work on diverse projects involving supervised and unsupervised learning, deep neural networks, natural language processing, and most recently, Generative AI. I enjoy exploring the intersection of backend development and intelligent systems—where automation meets creativity and problem-solving becomes both technical and strategic.\n\n" +
-		  "Outside of coding, I'm deeply into photography. Feel free to check out my Instagram or browse through my personal gallery to see the world through my lens.\n\n" +
-		  "When I'm not working or creating, you can probably find me grinding headshots in BGMI or CODM, raiding bases in Clash of Clans, doing missions in GTA, busting demons in DOOM, leaping off towers in Assassin’s Creed, running and gunning in Call of Duty, or EV training in Pokémon.",
-	  },	  
+		  "I’m a software developer passionate about building elegant backend systems and reliable APIs. I enjoy solving problems with clean, maintainable code, reducing complexity in distributed services, and improving performance where it matters. After gaining experience with Flask, FastAPI, Docker, and AWS, I now focus primarily on Python and C++ for both productivity and performance.\n\n" +
+          "I learn with purpose — every project teaches me something new and helps me grow as an engineer.\n\n" +
+          "Outside of work, I occasionally explore photography and unwind with casual gaming when time permits.",
+	},
 
 	experience: [
 		{
@@ -50,82 +49,162 @@ const INFO = {
 			company: "Workmates Core2Cloud",
 			period: "Dec 2023 - Present",
 			description: "Designing and deploying scalable cloud-native solutions, integrating MLOps practices, and ensuring robust infrastructure for AI-driven applications."
-		  },
-		  {
+		},
+		{
 			role: "ML Engineer Intern",
 			company: "Prodigy Infotech",
 			period: "Aug 2023 - Oct 2023",
 			description: "Developed and deployed machine learning models for NLP and recommendation systems, contributing to enhanced user experiences."
-		  },
+		},
 	],
 
 	hero: {
 		name: "Aditya Dey",
 		typewriterStrings: [
-			"Software Engineer",
-			"ML Engineer",
-			"AI Engineer",
-			"Software Development Engineer",
 			"Backend Developer",
-			"Python Developer",
-			"MLops Engineer",
+			"Systems Engineer",
+			"AI/ML Enthusiast",
+			"Python Specialist",
+			"Cloud Architect",
 		],
-		description:
-			"I am a Python Developer with a growing passion for solving real-world problems using AI and Machine Learning. I focus on developing intelligent solutions that blend code with creativity. My academic foundation has given me the technical depth and curiosity to continuously explore the evolving world of data and algorithms."
 	},
+
+    skills: {
+        backend: {
+            title: "Backend Development",
+            icon: <Server className="h-5 w-5" />,
+            items: [
+                { name: "Python", icon: <SiPython className="text-blue-500" /> },
+                { name: "Flask", icon: <SiFlask className="text-foreground" /> },
+                { name: "FastAPI", icon: <SiFastapi className="text-teal-500" /> },
+                { name: "REST APIs", icon: <Cloud className="text-sky-500" /> }
+            ]
+        },
+        systems: {
+            title: "Systems & Languages",
+            icon: <Code2 className="h-5 w-5" />,
+            items: [
+                { name: "C++", icon: <SiCplusplus className="text-blue-600" /> },
+                { name: "Python", icon: <SiPython className="text-blue-500" /> },
+                { name: "Rust", icon: <SiRust className="text-orange-500" /> },
+                { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> }
+            ]
+        },
+        database: {
+            title: "Databases",
+            icon: <Database className="h-5 w-5" />,
+            items: [
+                { name: "MySQL", icon: <SiMysql className="text-blue-500" /> },
+                { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-400" /> },
+                { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+                { name: "Redis", icon: <SiRedis className="text-red-500" /> }
+            ]
+        },
+        devops: {
+            title: "DevOps & Cloud",
+            icon: <Cloud className="h-5 w-5" />,
+            items: [
+                { name: "Docker", icon: <SiDocker className="text-blue-500" /> },
+                { name: "AWS", icon: <FaAws className="text-orange-500" /> },
+                { name: "Linux", icon: <FaLinux className="text-foreground" /> },
+                { name: "Git", icon: <FaGit className="text-red-500" /> },
+                { name: "Nginx", icon: <SiNginx className="text-green-600" /> },
+                { name: "GitHub Actions", icon: <SiGithubactions className="text-blue-600" /> }
+            ]
+        },
+        ai: {
+             title: "AI & ML",
+             icon: <Terminal className="h-5 w-5" />,
+             items: [
+                { name: "scikit-learn", icon: <SiScikitlearn className="text-orange-500" /> },
+                { name: "LangChain", icon: <Terminal className="text-green-500" /> }, // Fallback to Terminal if SiLangchain missing
+                { name: "PyTorch", icon: <SiPytorch className="text-red-500" /> },
+                { name: "RAG systems", icon: <Terminal className="text-purple-500" /> }
+             ]
+        }
+    },
+
+    process: [
+        {
+            title: "Understand",
+            description: "I start by deeply understanding the goal and the problem space."
+        },
+        {
+            title: "Prototype",
+            description: "I build quick prototypes to test assumptions and get early feedback."
+        },
+        {
+            title: "Iterate",
+            description: "I refine the solution based on real-world usage and performance metrics."
+        },
+        {
+            title: "Deliver",
+            description: "I ship clean, documented, and tested code that is ready for production."
+        }
+    ],
 
 	projects: [
 		{
-			title: "Sentiment Analysis using DistilBERT",
+			title: "Sentiment Analysis Tool",
+			tagline: "High-accuracy text classification using Transformers.",
 			image: "/nasa.jpg",
 			description:
-				"Built a sentiment analysis tool leveraging the DistilBERT transformer model to classify text sentiment with high accuracy. Includes data preprocessing, model fine-tuning, and deployment.",
-			linkText: "View in Github",
+				"Built a sentiment analysis tool leveraging the DistilBERT transformer model. I handled data preprocessing, model fine-tuning, and deployment to a scalable inference API.",
+			linkText: "View on GitHub",
 			link: "https://github.com/AditHash/Sentiment-Analysis-using-distilbert",
+            tags: ["Python", "Transformers", "NLP"]
 		},
 		{
-			title: "Movies Recommendation Engine",
+			title: "Movies Recommender",
+			tagline: "Personalized movie suggestions engine.",
 			image: "/nasa.jpg",
 			description:
-				"Developed a content-based and collaborative filtering movie recommendation system using Python and scikit-learn. Provides personalized movie suggestions based on user preferences.",
-			linkText: "View in Github",
+				"Developed a content-based and collaborative filtering recommendation system. Solved the cold-start problem and optimized query performance using scikit-learn.",
+			linkText: "View on GitHub",
 			link: "https://github.com/AditHash/IMDB-movies-recommendation-system",
+             tags: ["Python", "Scikit-Learn", "ML"]
 		},
 		{
-			title: "Gemini Chatbot using Model Context Protocol",
+			title: "Gemini Chatbot Router",
+			tagline: "Context-aware conversational AI.",
 			image: "/nasa.jpg",
 			description:
-				"Implemented a conversational AI chatbot powered by Gemini and Model Context Protocol for context-aware, multi-turn conversations. Supports Multi agent inegrations",
-			linkText: "View in Github",
+				"Implemented a conversational AI chatbot using the Model Context Protocol. Designed for multi-turn conversations and seamless multi-agent integration.",
+			linkText: "View on GitHub",
 			link: "https://github.com/AditHash/Gemini-Router",
+             tags: ["GenAI", "MCP", "Python"]
 		},
 		{
-			title: "QR Code Generator",
+			title: "Stock Advisor RAG",
+			tagline: "AI-powered financial insights.",
 			image: "/nasa.jpg",
 			description:
-				"Created a web app to generate QR codes for URLs and text using Python and JavaScript. Features download and customization options for generated codes.",
-			linkText: "View in Github",
-			link: "https://github.com/AditHash/qrcode-generator",
-		},
-		{
-			title: "Python Snake Game",
-			image: "/nasa.jpg",
-			description:
-				"Classic Snake game built with Python and Pygame. Includes scoring, increasing difficulty, and a retro-inspired UI.",
-			linkText: "View in Github",
-			link: "https://github.com/AditHash/Python-Snake-Game",
-		},
-		{
-			title: "Stock Advisor Chatbot",
-			image: "/nasa.jpg",
-			description:
-				"Retrieval-Augmented Generation (RAG) chatbot that combines retrieval models with generative AI for accurate, context-rich responses. Built with Python and HuggingFace Transformers.",
-			linkText: "View in Github",
+				"A Retrieval-Augmented Generation (RAG) chatbot combining retrieval models with generative AI to provide accurate, context-rich stock market answers.",
+			linkText: "View on GitHub",
 			link: "https://github.com/AditHash/stock-predictor",
+             tags: ["RAG", "HuggingFace", "Python"]
+		},
+        {
+			title: "Python Snake Game",
+			tagline: "Classic arcade fun with a modern touch.",
+			image: "/nasa.jpg",
+			description:
+				"Classic Snake game built with Python and Pygame. Features scoring, increasing difficulty, and a clean, retro-inspired user interface.",
+			linkText: "View on GitHub",
+			link: "https://github.com/AditHash/Python-Snake-Game",
+             tags: ["Python", "Pygame", "Game Dev"]
+		},
+        {
+			title: "QR Code Generator",
+			tagline: "Instant QR code creation tool.",
+			image: "/nasa.jpg",
+			description:
+				"Created a web app to generate QR codes for URLs and text. Features include custom coloring, download options, and a responsive frontend.",
+			linkText: "View on GitHub",
+			link: "https://github.com/AditHash/qrcode-generator",
+             tags: ["JavaScript", "Python", "Web"]
 		},
 	],
-
-	
 };
 
 export default INFO;

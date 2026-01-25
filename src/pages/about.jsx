@@ -1,225 +1,154 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import * as FaIcons from "react-icons/fa";
-import * as SiIcons from "react-icons/si";
+import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import NavBar from "../components/common/navBar";
-import Footer from "../components/common/footer";
-import Logo from "../components/common/logo";
-import Works from "../components/homepage/works";
 
-import INFO from "../data/user";
-import SEO from "../data/seo";
+import MainLayout from "@/components/layout/MainLayout";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
-import "./styles/about.css";
-
-const skillsData = [
-	{ name: "React.js", icon: "FaReact", color: "#61DBFB", category: "frontend" },
-	{ name: "Bootstrap", icon: "FaBootstrap", color: "#7952B3", category: "frontend" },
-	{ name: "HTML", icon: "FaHtml5", color: "#E34F26", category: "frontend" },
-	{ name: "CSS", icon: "FaCss3Alt", color: "#264DE4", category: "frontend" },
-	{ name: "Node.js", icon: "FaNodeJs", color: "#68A063", category: "backend" },
-	{ name: "Nest.js", icon: "SiNestjs", color: "#E0234E", category: "backend" },
-	{ name: "Python", icon: "FaPython", color: "#3776AB", category: "languages" },
-	{ name: "C++", icon: "SiCplusplus", color: "#00599C", category: "languages" },
-	{ name: "MySQL", icon: "SiMysql", color: "#4479A1", category: "databases" },
-	{ name: "PostgreSQL", icon: "SiPostgresql", color: "#336791", category: "databases" },
-	{ name: "MongoDB", icon: "SiMongodb", color: "#47A248", category: "databases" },
-	{ name: "Redis", icon: "SiRedis", color: "#DC382D", category: "databases" },
-	{ name: "AWS", icon: "FaAws", color: "#FF9900", category: "devops" },
-	{ name: "Docker", icon: "FaDocker", color: "#2496ED", category: "devops" },
-	{ name: "Docker Compose", icon: "FaDocker", color: "#2496ED", category: "devops" },
-	{ name: "TensorFlow", icon: "SiTensorflow", color: "#FF6F00", category: "ai-ml" },
-	{ name: "PyTorch", icon: "SiPytorch", color: "#EE4C2C", category: "ai-ml" },
-	{ name: "Keras", icon: "SiKeras", color: "#D00000", category: "ai-ml" },
-	{ name: "Scikit-Learn", icon: "SiScikitlearn", color: "#F7931E", category: "ai-ml" },
-	{ name: "OpenCV", icon: "SiOpencv", color: "#5C3EE8", category: "ai-ml" },
-	{ name: "Pandas", icon: "SiPandas", color: "#150458", category: "ai-ml" },
-	{ name: "NumPy", icon: "SiNumpy", color: "#013243", category: "ai-ml" },
-	{ name: "LangChain", icon: "SiLangchain", color: "#2B6CB0", category: "ai-ml" },
-	{ name: "Flask", icon: "SiFlask", color: "#000000", category: "backend" },
-	{ name: "FastAPI", icon: "SiFastapi", color: "#009688", category: "backend" },
-	{ name: "JavaScript", icon: "SiJavascript", color: "#F7DF1E", category: "languages" },
-	{ name: "TypeScript", icon: "SiTypescript", color: "#3178C6", category: "languages" },
-	{ name: "Git", icon: "FaGit", color: "#F05032", category: "devops" },
-	{ name: "GitHub", icon: "FaGithub", color: "#181717", category: "devops" },
-	{ name: "Jupyter", icon: "SiJupyter", color: "#F37626", category: "ai-ml" },
-	{ name: "Linux", icon: "FaLinux", color: "#FCC624", category: "devops" },
-	{ name: "Kubernetes", icon: "SiKubernetes", color: "#326CE5", category: "devops" },
-	{ name: "Jenkins", icon: "SiJenkins", color: "#D24939", category: "devops" },
-	{ name: "Apache Airflow", icon: "SiApacheairflow", color: "#017CEE", category: "ai-ml" },
-	{ name: "MLflow", icon: "SiMlflow", color: "#0194E2", category: "ai-ml" },
-
-];
+import INFO from "@/data/user";
+import SEO from "@/data/seo";
 
 const About = () => {
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-	const currentSEO = SEO.find((item) => item.page === "about");
-	const [selectedCategory, setSelectedCategory] = useState("all");
+    const currentSEO = SEO.find((item) => item.page === "about");
+    
+    return (
+        <MainLayout>
+            <Helmet>
+                <title>{`About | ${INFO.main.title}`}</title>
+                <meta name="description" content={currentSEO.description} />
+                <meta name="keywords" content={currentSEO.keywords.join(", ")} />
+            </Helmet>
 
-	const filteredSkills = selectedCategory === "all"
-		? skillsData
-		: skillsData.filter(skill => skill.category === selectedCategory);
+            <div className="container max-w-screen-2xl px-4 md:px-8 py-12 space-y-16">
+                
+                {/* BIO SECTION */}
+                <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="space-y-6"
+                    >
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+                            I’m <span className="text-primary">{INFO.main.name}</span>.
+                            <br />
+                            <span className="text-2xl md:text-3xl text-muted-foreground block mt-2">from Kolkata, India.</span>
+                        </h1>
+                        
+                        <div className="space-y-4 text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                            {INFO.about.description}
+                        </div>
 
-	return (
-		<React.Fragment>
-			<Helmet>
-				<title>{`About | ${INFO.main.title}`}</title>
-				<meta name="description" content={currentSEO.description} />
-				<meta
-					name="keywords"
-					content={currentSEO.keywords.join(", ")}
-				/>
-			</Helmet>
+                        {INFO.socials.instagram && (
+                            <motion.div 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                className="pt-2"
+                            >
+                                <Button variant="link" className="p-0 h-auto text-lg text-primary hover:text-primary/80" asChild>
+                                    <a href={INFO.socials.instagram} target="_blank" rel="noreferrer">
+                                        Follow my photography on Instagram →
+                                    </a>
+                                </Button>
+                            </motion.div>
+                        )}
+                    </motion.div>
 
-			<div className="page-content">
-				<NavBar active="about" />
-				<div className="content-wrapper">
-					<div className="about-logo-container">
-						<div className="about-logo">
-							<Logo width={46} />
-						</div>
-					</div>
+                    <motion.div 
+                         initial={{ opacity: 0, scale: 0.95 }}
+                         animate={{ opacity: 1, scale: 1 }}
+                         transition={{ duration: 0.5, delay: 0.2 }}
+                         className="relative"
+                    >
+                        <div className="rounded-xl overflow-hidden shadow-2xl border border-border">
+                             <Carousel
+                                showArrows={true}
+                                autoPlay={true}
+                                infiniteLoop={true}
+                                showThumbs={false}
+                                showStatus={false}
+                                interval={3000}
+                                className="w-full"
+                            >
+                                <div className="h-[400px] lg:h-[500px]">
+                                     <img src="about1.jpg" alt="about1" className="object-cover h-full w-full" />
+                                </div>
+                                <div className="h-[400px] lg:h-[500px]">
+                                     <img src="homepage.jpg" alt="homepage" className="object-cover h-full w-full" />
+                                </div>
+                                <div className="h-[400px] lg:h-[500px]">
+                                     <img src="about2.jpg" alt="about2" className="object-cover h-full w-full" />
+                                </div>
+                                <div className="h-[400px] lg:h-[500px]">
+                                     <img src="about3.jpg" alt="about3" className="object-cover h-full w-full" />
+                                </div>
+                            </Carousel>
+                        </div>
+                    </motion.div>
+                </section>
 
-					<div className="about-container">
-						<div className="about-main">
-							<div className="about-right-side">
-								<div className="title about-title">
-									<span className="text-black">I’m </span>
-									<span className="name-highlight">Aditya Dey</span>
-									<span className="text-black">. I am from </span>
-									<span className="location-highlight">Kolkata, India</span>
-									<span className="text-black">.</span>
-								</div>
+                <Separator />
 
-								{/* Paragraph for description */}
-								<div className="subtitle about-subtitle">
-									<p>
-										I am a backend developer primarily working with <span style={{ color: "green" }}>Python</span> and <span style={{ color: "green" }}>Node.js</span>, with a strong focus on building scalable, efficient, and maintainable systems. Over the years, I’ve gained hands-on experience in designing RESTful APIs, managing databases, and integrating cloud services to support dynamic, data-driven applications.
-									</p>
-									<p>
-										My deep interest in Artificial Intelligence and <span style={{ color: "green" }}>Machine Learning</span> has led me to work on diverse projects involving supervised and unsupervised learning, deep neural networks, natural language processing, and most recently, <span style={{ color: "green" }}>Generative AI</span>. I enjoy exploring the intersection of backend development and intelligent systems—where automation meets creativity and problem-solving becomes both technical and strategic.
-									</p>
-									<p>
-										Outside of coding, I'm deeply into photography. Feel free to check out my Instagram or browse through my personal gallery to see the world through my lens.
-									</p>
-									<p>
-										When I'm not working or creating, you can probably find me grinding headshots in <span style={{ color: "green" }}>BGMI</span> or <span style={{ color: "green" }}>CODM</span>, raiding bases in <span style={{ color: "green" }}>Clash of Clans</span>, doing missions in <span style={{ color: "green" }}>GTA</span>, busting demons in <span style={{ color: "green" }}>DOOM</span>, leaping off towers in <span style={{ color: "green" }}>Assassin’s Creed</span>, running and gunning in <span style={{ color: "green" }}>Call of Duty</span>, or EV training in <span style={{ color: "green" }}>Pokémon</span>.
-									</p>
-									<p>
-										I Love listening to phonk music and watching anime. I am a big fan of <span style={{ color: "green" }}>Attack on Titan</span> and <span style={{ color: "green" }}>Vinland Saga</span>.
-									</p>
-								</div>
+                {/* EXPERIENCE SECTION */}
+                <section className="space-y-8">
+                     <h2 className="text-3xl font-bold tracking-tight">Work Experience</h2>
+                     <div className="relative border-l border-border ml-4 space-y-12">
+                        {INFO.experience.map((exp, index) => (
+                            <div key={index} className="ml-8 relative">
+                                <span className="absolute -left-[41px] top-1 h-4 w-4 rounded-full bg-background border-2 border-primary ring-4 ring-background" />
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
+                                    <h3 className="text-xl font-bold">{exp.role}</h3>
+                                    <Badge variant="outline">{exp.period}</Badge>
+                                </div>
+                                <h4 className="text-lg text-primary font-medium mb-3">{exp.company}</h4>
+                                <p className="text-muted-foreground max-w-2xl">
+                                    {exp.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
-								{/* Add spacing between About and Experience */}
-								<div style={{ marginTop: "40px" }}></div>
-							</div>
+                <Separator />
 
-							<div className="about-left-side">
-								<div className="about-image-container">
-									<div className="about-image-wrapper">
-										<Carousel
-											showArrows={true}
-											autoPlay={true}
-											infiniteLoop={true}
-											showThumbs={false}
-											showStatus={false}
-											interval={3000} // Set auto-scroll interval to 3 seconds
-										>
-											<img src="about1.jpg" alt="about1" className="about-image" />
-											<img src="homepage.jpg" alt="about3" className="about-image" />
-											<img src="about2.jpg" alt="about2" className="about-image" />
-											<img src="about3.jpg" alt="about3" className="about-image" />
-										</Carousel>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						{/* Paragraph for Experience section */}
-						<div className="experience-container">
-							<div className="title experience-title">
-								Experience
-							</div>
-							<div className="experience-list" style={{ textAlign: "left" }}>
-								{INFO.experience.map((exp, index) => (
-									<div key={index} className="experience-item">
-										<div className="experience-header">
-											<div className="experience-role">
-												<strong>{exp.role}</strong>
-											</div>
-											<div className="experience-period">
-												<small>{exp.period}</small>
-											</div>
-										</div>
-										<div className="experience-company">
-											<em>{exp.company}</em>
-										</div>
-										<div className="experience-description">
-											{exp.description}
-										</div>
-									</div>
-								))}
-							</div>
-						</div>
-
-						{/* Add spacing between Experience and Skills */}
-						<div style={{ marginTop: "40px" }}></div>
-
-						 {/* Paragraph for Skills section */}
-						<div className="skills-section">
-							<div className="title skills-title">
-								Skills
-							</div>
-
-							{/* Beautified Classification Header */}
-							<div className="skills-filter">
-								{["all", "frontend", "backend", "databases", "devops", "ai-ml", "languages"].map((category) => (
-									<button
-										key={category}
-										className={`filter-button ${selectedCategory === category ? "active" : ""}`}
-										onClick={() => setSelectedCategory(category)}
-									>
-										{category.charAt(0).toUpperCase() + category.slice(1)}
-									</button>
-								))}
-							</div>
-
-							<div className="skills-grid">
-								{filteredSkills.map((skill, index) => {
-									const IconComponent =
-										FaIcons[skill.icon] || SiIcons[skill.icon];
-									return (
-										<div
-											key={index}
-											className="skill-card"
-											style={{ borderColor: skill.color }}
-										>
-											<div
-												className="skill-icon"
-												style={{ color: skill.color }}
-											>
-												{IconComponent && <IconComponent />}
-											</div>
-											<div className="skill-name">{skill.name}</div>
-										</div>
-									);
-								})}
-							</div>
-						</div>
-					</div>
-					
-					<div className="page-footer">
-						<Footer />
-					</div>
-				</div>
-			</div>
-		</React.Fragment>
-	);
+                {/* SKILLS OVERVIEW */}
+                <section className="space-y-8">
+                    <h2 className="text-3xl font-bold tracking-tight">Technical Proficiency</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {Object.values(INFO.skills).map((cat, index) => (
+                            <Card key={index} className="bg-muted/30">
+                                <CardHeader>
+                                    <CardTitle className="text-lg flex items-center gap-2">
+                                        {cat.icon} {cat.title}
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="flex flex-wrap gap-2">
+                                        {cat.items.map(item => (
+                                            <Badge key={item.name} variant="secondary" className="bg-background hover:bg-background/80 flex items-center gap-1.5 px-3 py-1">
+                                                {item.icon}
+                                                {item.name}
+                                            </Badge>
+                                        ))}
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                </section>
+            </div>
+        </MainLayout>
+    );
 };
 
 export default About;

@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Frown } from "lucide-react";
+import { Link } from "react-router-dom";
 
-import { faFaceSadTear } from "@fortawesome/free-regular-svg-icons";
+import MainLayout from "@/components/layout/MainLayout";
+import { Button } from "@/components/ui/button";
 
-import NavBar from "../components/common/navBar";
-import Logo from "../components/common/logo";
-
-import INFO from "../data/user";
-
-import "./styles/404.css";
+import INFO from "@/data/user";
 
 const Notfound = () => {
 	useEffect(() => {
@@ -16,35 +13,20 @@ const Notfound = () => {
 	}, []);
 
 	return (
-		<React.Fragment>
-			<div className="not-found page-content">
-				<NavBar />
-				<div className="content-wrapper">
-					<div className="notfound-logo-container">
-						<div className="projects-logo">
-							<Logo width={46} />
-						</div>
-					</div>
-					<div className="notfound-container">
-						<div className="notfound-message">
-							<div className="notfound-title">
-								Oops! <FontAwesomeIcon icon={faFaceSadTear} />
-							</div>
-							<div className="not-found-message">
-								We can't seem to find the page you're looking
-								for.
-								<br />
-								The requested URL "{window.location.href}" was
-								not found on this server.
-							</div>
-							<a href="/" className="not-found-link">
-								Go back to the home page
-							</a>
-						</div>
-					</div>
-				</div>
+		<MainLayout>
+			<div className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-6 px-4">
+				<Frown className="h-24 w-24 text-muted-foreground" />
+				<h1 className="text-4xl font-bold tracking-tight">Oops! Page Not Found</h1>
+				<p className="text-lg text-muted-foreground max-w-md">
+					We can't seem to find the page you're looking for.
+					<br />
+					The requested URL was not found on this server.
+				</p>
+				<Button asChild size="lg">
+					<Link to="/">Go back home</Link>
+				</Button>
 			</div>
-		</React.Fragment>
+		</MainLayout>
 	);
 };
 

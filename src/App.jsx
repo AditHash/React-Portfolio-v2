@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import ReactGA from "react-ga4";
 
+import { ThemeProvider } from "@/components/theme-provider"
 import Homepage from "./pages/homepage";
 import About from "./pages/about";
-import Projects from "./pages/projects";
 import Contact from "./pages/contact";
 import Notfound from "./pages/404";
 
@@ -19,15 +19,16 @@ function App() {
 	}, []);
 
 	return (
-		<div className="App">
-			<Routes>
-				<Route path="/" element={<Homepage />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/projects" element={<Projects />} />
-				<Route path="/contact" element={<Contact />} />
-				<Route path="*" element={<Notfound />} />
-			</Routes>
-		</div>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="*" element={<Notfound />} />
+                </Routes>
+            </div>
+        </ThemeProvider>
 	);
 }
 
