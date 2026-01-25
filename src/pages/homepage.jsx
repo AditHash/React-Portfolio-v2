@@ -98,18 +98,29 @@ const Homepage = () => {
                     </motion.div>
 
                     <motion.div 
-                        initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                        transition={{ duration: 0.8, type: "spring" }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         className="lg:w-2/5 flex justify-center"
                     >
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-pulse" />
-                            <Avatar className="w-full h-full border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500">
+                        <motion.div 
+                            animate={{ y: [0, -20, 0] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group"
+                        >
+                            {/* Subtle Breathing Glow */}
+                            <motion.div 
+                                animate={{ opacity: [0.4, 0.6, 0.4], scale: [1, 1.05, 1] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-violet-600 rounded-3xl blur-3xl"
+                            />
+                            
+                            {/* Main Image Container */}
+                            <Avatar className="w-full h-full border-[1px] border-white/10 shadow-2xl rounded-3xl relative z-10">
                                 <AvatarImage src="image2.jpg" alt="Aditya Dey" className="object-cover" />
-                                <AvatarFallback className="text-6xl">AD</AvatarFallback>
+                                <AvatarFallback className="text-6xl rounded-3xl">AD</AvatarFallback>
                             </Avatar>
-                        </div>
+                        </motion.div>
                     </motion.div>
                 </section>
 

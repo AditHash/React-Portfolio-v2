@@ -19,7 +19,7 @@ function App() {
 	}, []);
 
 	return (
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Homepage />} />
