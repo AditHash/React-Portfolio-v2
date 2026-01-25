@@ -16,7 +16,7 @@ const INFO = {
 		title: "Aditya's Portfolio",
 		name: "Aditya Dey",
 		email: "adey9217@gmail.com",
-		logo: "../logo.png",
+		logo: "../logo.jpg",
 	},
 
 	socials: {
