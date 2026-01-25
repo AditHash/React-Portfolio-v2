@@ -81,16 +81,16 @@ const About = () => {
                                 className="w-full"
                             >
                                 <div className="h-[400px] lg:h-[500px]">
-                                     <img src="about1.jpg" alt="about1" className="object-cover h-full w-full" />
+                                     <img src="image1.jpg" alt="Photo 1" className="object-cover h-full w-full" />
                                 </div>
                                 <div className="h-[400px] lg:h-[500px]">
-                                     <img src="homepage.jpg" alt="homepage" className="object-cover h-full w-full" />
+                                     <img src="image3.jpg" alt="Photo 3" className="object-cover h-full w-full" />
                                 </div>
                                 <div className="h-[400px] lg:h-[500px]">
-                                     <img src="about2.jpg" alt="about2" className="object-cover h-full w-full" />
+                                     <img src="image4.jpg" alt="Photo 4" className="object-cover h-full w-full" />
                                 </div>
                                 <div className="h-[400px] lg:h-[500px]">
-                                     <img src="about3.jpg" alt="about3" className="object-cover h-full w-full" />
+                                     <img src="Image5.jpg" alt="Photo 5" className="object-cover h-full w-full" />
                                 </div>
                             </Carousel>
                         </div>

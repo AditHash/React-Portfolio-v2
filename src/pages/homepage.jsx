@@ -106,7 +106,7 @@ const Homepage = () => {
                         <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group">
                             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-pulse" />
                             <Avatar className="w-full h-full border-4 border-background shadow-2xl group-hover:scale-105 transition-transform duration-500">
-                                <AvatarImage src="homepage.jpg" alt="Aditya Dey" className="object-cover" />
+                                <AvatarImage src="image2.jpg" alt="Aditya Dey" className="object-cover" />
                                 <AvatarFallback className="text-6xl">AD</AvatarFallback>
                             </Avatar>
                         </div>

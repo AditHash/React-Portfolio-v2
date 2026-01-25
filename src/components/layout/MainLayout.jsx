@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useScroll, useSpring } from "framer-motion";
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { CommandMenu } from "@/components/command-menu";
 
 const MainLayout = ({ children }) => {
   const { scrollYProgress } = useScroll();
@@ -29,6 +30,7 @@ const MainLayout = ({ children }) => {
         {children}
       </main>
       <Footer />
+      <CommandMenu />
     </div>
   );
 };
