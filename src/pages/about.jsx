@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 import SEOHead from "@/components/seo-head";
-import { SpotlightCard } from "@/components/ui/animated";
+import { SpotlightCard, AnimatedCounter } from "@/components/ui/animated";
 
 import INFO from "@/data/user";
 import SEO from "@/data/seo";
@@ -35,9 +35,9 @@ const About = () => {
     const currentSEO = SEO.find((item) => item.page === "about");
 
     const stats = [
-        { icon: <Briefcase className="h-5 w-5" />, value: "2+",  label: "Yrs Experience" },
-        { icon: <Code2     className="h-5 w-5" />, value: "20+",  label: "Projects Built"  },
-        { icon: <MapPin    className="h-5 w-5" />, value: "KOL", label: "Kolkata, India"  },
+        { icon: <Briefcase className="h-5 w-5" />, to: 2,  suffix: "+", label: "Yrs Experience" },
+        { icon: <Code2     className="h-5 w-5" />, to: 20, suffix: "+", label: "Projects Built"  },
+        { icon: <MapPin    className="h-5 w-5" />, to: null, static: "KOL", label: "Kolkata, India"  },
     ];
 
     return (
@@ -83,7 +83,9 @@ const About = () => {
                                         {stat.icon}
                                     </div>
                                     <div className="text-2xl font-black bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
-                                        {stat.value}
+                                        {stat.to !== null
+                                            ? <AnimatedCounter to={stat.to} suffix={stat.suffix} />
+                                            : stat.static}
                                     </div>
                                     <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{stat.label}</div>
                                 </div>
@@ -162,7 +164,15 @@ const About = () => {
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Work History</h2>
                     </motion.div>
 
-                    <div className="relative border-l-2 border-primary/20 ml-4 space-y-8">
+                    <div className="relative ml-4 space-y-8">
+                        {/* Animated vertical line */}
+                        <motion.div
+                            className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary/20 origin-top"
+                            initial={{ scaleY: 0 }}
+                            whileInView={{ scaleY: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        />
                         {INFO.experience.map((exp, index) => (
                             <motion.div
                                 key={index}

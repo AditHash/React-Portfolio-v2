@@ -354,6 +354,7 @@ const Homepage = () => {
                         {/* ── Remaining projects ── */}
                         {restProjects.map((project, index) => (
                             <motion.div variants={itemVariants} key={index}>
+                                <SpotlightCard className="rounded-xl h-full">
                                 <Card className="h-full flex flex-col overflow-hidden border-border/60 bg-card hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1.5 transition-all duration-300 group">
 
                                     {/* Gradient banner */}
@@ -416,6 +417,7 @@ const Homepage = () => {
                                         </Button>
                                     </CardFooter>
                                 </Card>
+                                </SpotlightCard>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -452,7 +454,9 @@ const Homepage = () => {
                         className="space-y-3 text-center"
                     >
                         <Badge variant="outline" className="px-4 py-1 border-primary/40 text-primary">Workflow</Badge>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">How I Work</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                            <WordReveal text="How I Work" />
+                        </h2>
                     </motion.div>
 
                     <div className="relative">
