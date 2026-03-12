@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { MapPin, Briefcase, Code2, Camera, Download } from "lucide-react";
 
 import MainLayout from "@/components/layout/MainLayout";
 import { Badge } from "@/components/ui/badge";
@@ -13,13 +14,30 @@ import { Separator } from "@/components/ui/separator";
 import INFO from "@/data/user";
 import SEO from "@/data/seo";
 
+const carouselImages = [
+    { src: "image1.jpg",  alt: "Photo 1" },
+    { src: "image2.jpg",  alt: "Photo 2" },
+    { src: "image3.png",  alt: "Photo 3" },
+    { src: "image4.png",  alt: "Photo 4" },
+    { src: "image5.png",  alt: "Photo 5" },
+    { src: "image6.png",  alt: "Photo 6" },
+    { src: "image7.png",  alt: "Photo 7" },
+    { src: "image8.png",  alt: "Photo 8" },
+];
+
 const About = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     const currentSEO = SEO.find((item) => item.page === "about");
-    
+
+    const stats = [
+        { icon: <Briefcase className="h-5 w-5" />, value: "2+",  label: "Yrs Experience" },
+        { icon: <Code2     className="h-5 w-5" />, value: "20+",  label: "Projects Built"  },
+        { icon: <MapPin    className="h-5 w-5" />, value: "KOL", label: "Kolkata, India"  },
+    ];
+
     return (
         <MainLayout>
             <Helmet>
@@ -28,124 +46,201 @@ const About = () => {
                 <meta name="keywords" content={currentSEO.keywords.join(", ")} />
             </Helmet>
 
-            <div className="container max-w-screen-2xl px-4 md:px-8 py-12 space-y-16">
-                
-                {/* BIO SECTION */}
+            <div className="container max-w-screen-xl mx-auto px-4 md:px-8 py-12 space-y-20">
+
+                {/* ── BIO ─────────────────────────────────────────── */}
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="space-y-6"
+                        className="space-y-8"
                     >
-                        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-                            I’m <span className="text-primary">{INFO.main.name}</span>.
-                            <br />
-                            <span className="text-2xl md:text-3xl text-muted-foreground block mt-2">from Kolkata, India.</span>
-                        </h1>
-                        
-                        <div className="space-y-4 text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
-                            {INFO.about.description}
+                        <div className="space-y-3">
+                            <Badge variant="outline" className="px-4 py-1 border-primary/40 text-primary">About Me</Badge>
+                            <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1]">
+                                I'm{" "}
+                                <span className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
+                                    {INFO.main.name}
+                                </span>
+                                <span className="text-muted-foreground text-2xl md:text-3xl font-medium block mt-2">
+                                    from Kolkata, India.
+                                </span>
+                            </h1>
                         </div>
 
-                        {INFO.socials.instagram && (
-                            <motion.div 
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                                className="pt-2"
+                        {/* Stats row */}
+                        <div className="grid grid-cols-3 gap-3">
+                            {stats.map((stat) => (
+                                <div
+                                    key={stat.label}
+                                    className="flex flex-col items-center text-center p-4 rounded-2xl bg-card border border-border/60 hover:border-primary/30 transition-all duration-300 group"
+                                >
+                                    <div className="text-primary mb-1.5 group-hover:scale-110 transition-transform duration-300">
+                                        {stat.icon}
+                                    </div>
+                                    <div className="text-2xl font-black bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
+                                        {stat.value}
+                                    </div>
+                                    <div className="text-xs text-muted-foreground mt-0.5 leading-tight">{stat.label}</div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Bio paragraphs */}
+                        <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
+                            {INFO.about.description.split("\n\n").map((para, i) => (
+                                <p key={i}>{para}</p>
+                            ))}
+                        </div>
+
+                        {/* Action buttons */}
+                        <div className="flex flex-wrap gap-3">
+                            <Button
+                                className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-600 dark:to-rose-600 hover:opacity-90 text-white border-0 shadow-lg shadow-primary/20 gap-2 transition-all duration-300"
+                                asChild
                             >
-                                <Button variant="link" className="p-0 h-auto text-lg text-primary hover:text-primary/80" asChild>
+                                <a href={INFO.main.cv} target="_blank" rel="noreferrer">
+                                    <Download className="h-4 w-4" /> Download CV
+                                </a>
+                            </Button>
+                            {INFO.socials.instagram && (
+                                <Button variant="outline" className="gap-2 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300" asChild>
                                     <a href={INFO.socials.instagram} target="_blank" rel="noreferrer">
-                                        Follow my photography on Instagram →
+                                        <Camera className="h-4 w-4" /> Photography →
                                     </a>
                                 </Button>
-                            </motion.div>
-                        )}
+                            )}
+                        </div>
                     </motion.div>
 
-                    <motion.div 
-                         initial={{ opacity: 0, scale: 0.95 }}
-                         animate={{ opacity: 1, scale: 1 }}
-                         transition={{ duration: 0.5, delay: 0.2 }}
-                         className="relative"
+                    {/* Photo carousel */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="relative"
                     >
-                        <div className="rounded-xl overflow-hidden shadow-2xl border border-border">
-                             <Carousel
-                                showArrows={true}
-                                autoPlay={true}
-                                infiniteLoop={true}
+                        <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/60 ring-1 ring-primary/10 bg-muted/30">
+                            <Carousel
+                                showArrows
+                                autoPlay
+                                infiniteLoop
                                 showThumbs={false}
                                 showStatus={false}
-                                interval={3000}
-                                className="w-full"
+                                interval={3500}
+                                transitionTime={600}
                             >
-                                <div className="h-[400px] lg:h-[500px]">
-                                     <img src="image1.jpg" alt="Photo 1" className="object-cover h-full w-full" />
-                                </div>
-                                <div className="h-[400px] lg:h-[500px]">
-                                     <img src="image3.jpg" alt="Photo 3" className="object-cover h-full w-full" />
-                                </div>
-                                <div className="h-[400px] lg:h-[500px]">
-                                     <img src="image4.jpg" alt="Photo 4" className="object-cover h-full w-full" />
-                                </div>
-                                <div className="h-[400px] lg:h-[500px]">
-                                     <img src="Image5.jpg" alt="Photo 5" className="object-cover h-full w-full" />
-                                </div>
+                                {carouselImages.map((img, i) => (
+                                    <div key={i} className="flex items-center justify-center p-2 bg-muted/20">
+                                        <img
+                                            src={img.src}
+                                            alt={img.alt}
+                                            className="w-full h-auto max-h-[600px] object-contain"
+                                        />
+                                    </div>
+                                ))}
                             </Carousel>
                         </div>
                     </motion.div>
                 </section>
 
-                <Separator />
+                <Separator className="opacity-40" />
 
-                {/* EXPERIENCE SECTION */}
+                {/* ── EXPERIENCE ──────────────────────────────────── */}
                 <section className="space-y-8">
-                     <h2 className="text-3xl font-bold tracking-tight">Work Experience</h2>
-                     <div className="relative border-l border-border ml-4 space-y-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-2"
+                    >
+                        <Badge variant="outline" className="px-4 py-1 border-primary/40 text-primary">Experience</Badge>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Work History</h2>
+                    </motion.div>
+
+                    <div className="relative border-l-2 border-primary/20 ml-4 space-y-8">
                         {INFO.experience.map((exp, index) => (
-                            <div key={index} className="ml-8 relative">
-                                <span className="absolute -left-[41px] top-1 h-4 w-4 rounded-full bg-background border-2 border-primary ring-4 ring-background" />
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
-                                    <h3 className="text-xl font-bold">{exp.role}</h3>
-                                    <Badge variant="outline">{exp.period}</Badge>
-                                </div>
-                                <h4 className="text-lg text-primary font-medium mb-3">{exp.company}</h4>
-                                <p className="text-muted-foreground max-w-2xl">
-                                    {exp.description}
-                                </p>
-                            </div>
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.15 }}
+                                className="ml-8 relative"
+                            >
+                                {/* Timeline dot */}
+                                <span className="absolute -left-[41px] top-5 h-4 w-4 rounded-full bg-primary/20 border-2 border-primary ring-4 ring-background" />
+
+                                <Card className="border-border/60 bg-card hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                                    <CardHeader className="pb-2">
+                                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                                            <CardTitle className="text-xl font-bold">{exp.role}</CardTitle>
+                                            <Badge variant="secondary" className="w-fit text-xs shrink-0">{exp.period}</Badge>
+                                        </div>
+                                        <p className="text-primary font-semibold text-base">{exp.company}</p>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-muted-foreground text-sm leading-relaxed">{exp.description}</p>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
                         ))}
                     </div>
                 </section>
 
-                <Separator />
+                <Separator className="opacity-40" />
 
-                {/* SKILLS OVERVIEW */}
+                {/* ── SKILLS ──────────────────────────────────────── */}
                 <section className="space-y-8">
-                    <h2 className="text-3xl font-bold tracking-tight">Technical Proficiency</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-2"
+                    >
+                        <Badge variant="outline" className="px-4 py-1 border-primary/40 text-primary">Skills</Badge>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Technical Proficiency</h2>
+                    </motion.div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {Object.values(INFO.skills).map((cat, index) => (
-                            <Card key={index} className="bg-muted/30">
-                                <CardHeader>
-                                    <CardTitle className="text-lg flex items-center gap-2">
-                                        {cat.icon} {cat.title}
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="flex flex-wrap gap-2">
-                                        {cat.items.map(item => (
-                                            <Badge key={item.name} variant="secondary" className="bg-background hover:bg-background/80 flex items-center gap-1.5 px-3 py-1">
-                                                {item.icon}
-                                                {item.name}
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 15 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.08 }}
+                            >
+                                <Card className="bg-card border-border/60 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-300 h-full group">
+                                    <CardHeader className="pb-3">
+                                        <CardTitle className="text-sm font-semibold flex items-center gap-2 text-primary">
+                                            <span className="group-hover:scale-110 transition-transform duration-300">
+                                                {cat.icon}
+                                            </span>
+                                            {cat.title}
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <div className="flex flex-wrap gap-2">
+                                            {cat.items.map((item) => (
+                                                <Badge
+                                                    key={item.name}
+                                                    variant="secondary"
+                                                    className="flex items-center gap-1.5 px-2.5 py-1 text-xs hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
+                                                >
+                                                    {item.icon}
+                                                    {item.name}
+                                                </Badge>
+                                            ))}
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
                         ))}
                     </div>
                 </section>
+
             </div>
         </MainLayout>
     );
