@@ -1,13 +1,13 @@
 const SEO = [
     {
         page: "home",
-        title: "Aditya Dey — Backend & Cloud Engineer",
+        title: "Aditya Dey — Backend Developer (AI)",
         description:
-            "Aditya Dey is a backend and cloud engineer specializing in Python, AWS, Kafka, and AI systems. " +
-            "Building production-grade APIs, event-driven pipelines, voice AI, and LangGraph agents from Kolkata, India.",
+            "Aditya Dey is a backend developer specializing in AI systems, Python, AWS, Kafka, and LangGraph. " +
+            "Building production-grade APIs, event-driven pipelines, voice AI, and agentic workflows from Kolkata, India.",
         keywords: [
-            "Aditya Dey", "backend engineer", "cloud engineer", "Python developer",
-            "AWS engineer", "Kafka", "FastAPI", "Flask", "LangGraph", "RAG",
+            "Aditya Dey", "backend developer", "AI engineer", "Python developer",
+            "AWS engineer", "Kafka", "FastAPI", "LangGraph", "RAG",
             "voice AI", "MLOps", "Docker", "microservices", "Kolkata",
             "portfolio", "software engineer India",
         ],
@@ -16,13 +16,13 @@ const SEO = [
         page: "about",
         title: "About — Aditya Dey",
         description:
-            "Learn about Aditya Dey — a backend and cloud engineer from Kolkata, India. " +
-            "Associate Cloud Engineer at Workmates Core2Cloud with expertise in Python, AWS Bedrock, " +
-            "Docker, LangChain, and real-time AI systems.",
+            "Learn about Aditya Dey — a backend developer (AI) from Kolkata, India. " +
+            "Currently building AI systems at Workmates Core2Cloud with expertise in Python, AWS Bedrock, " +
+            "LangGraph, FastAPI, and real-time voice AI.",
         keywords: [
-            "Aditya Dey", "about", "Associate Cloud Engineer", "Workmates Core2Cloud",
+            "Aditya Dey", "about", "Backend Developer AI", "Workmates Core2Cloud",
             "Python", "AWS", "backend developer India", "Kolkata engineer",
-            "ML engineer", "FastAPI developer", "LangChain", "AI systems",
+            "LangGraph developer", "FastAPI developer", "LangChain", "AI systems",
         ],
     },
     {

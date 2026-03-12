@@ -10,7 +10,7 @@ import { FaAws, FaLinux, FaGit } from "react-icons/fa";
 
 const INFO = {
     main: {
-        title: "Aditya Dey — Backend & Cloud Engineer",
+        title: "Aditya Dey — Backend Developer (AI)",
         name: "Aditya Dey",
         email: "adey9217@gmail.com",
         logo: "../logo.jpg",
@@ -28,9 +28,9 @@ const INFO = {
 
     homepage: {
         greeting: "Hi, I am Aditya Dey",
-        intro: "— a backend and cloud engineer specializing in Python, AWS, and AI systems.",
+        intro: "— a backend developer specializing in AI systems, Python, and AWS.",
         description:
-            "I build production-grade backend services, event-driven pipelines, and voice AI systems. " +
+            "I build production-grade backend services, AI-powered pipelines, and voice AI systems. " +
             "From real-time fraud detection with Kafka to local voice assistants powered by open-source LLMs — " +
             "I work across the full backend stack with a focus on scalability and intelligent automation.\n\n" +
             "Explore my work below or get in touch to collaborate.",
@@ -39,23 +39,32 @@ const INFO = {
     about: {
         title: "I'm Aditya Dey. I am from Kolkata, India.",
         description:
-            "I'm a backend and cloud engineer passionate about building systems that are both powerful and elegant. " +
+            "I'm a backend developer focused on AI systems — passionate about building software that is both powerful and elegant. " +
             "I work primarily in Python and C++, building everything from REST APIs to real-time streaming pipelines and voice AI applications.\n\n" +
-            "At Workmates Core2Cloud, I design and deploy cloud-native solutions on AWS — integrating MLOps practices, " +
-            "LangGraph agents, and containerised microservices for AI-driven products.\n\n" +
-            "I'm particularly drawn to the intersection of backend engineering and AI: RAG systems, voice interfaces, " +
-            "real-time event processing, and agentic workflows. Every project is an opportunity to push the boundaries " +
+            "At Workmates Core2Cloud, I develop AI-driven backend systems — LangGraph agents, RAG pipelines, voice AI with AWS Bedrock, " +
+            "and containerised microservices for production environments.\n\n" +
+            "I'm particularly drawn to the intersection of backend engineering and AI: voice interfaces, agentic workflows, " +
+            "real-time event processing, and retrieval-augmented generation. Every project is an opportunity to push the boundaries " +
             "of what reliable, intelligent software can do.\n\n" +
             "Outside of work, I explore photography and decompress with casual gaming.",
     },
 
     experience: [
         {
+            role: "Backend Developer (AI)",
+            company: "Workmates Core2Cloud",
+            period: "2025 – Present",
+            description:
+                "Building AI-powered backend systems — LangGraph and LangChain agents, RAG pipelines with AWS Bedrock, " +
+                "real-time voice AI, and FastAPI microservices. Developing intelligent automation tools and agentic workflows " +
+                "for production cloud environments.",
+        },
+        {
             role: "Associate Cloud Engineer",
             company: "Workmates Core2Cloud",
-            period: "Dec 2023 – Present",
+            period: "Dec 2023 – 2024",
             description:
-                "Designing and deploying cloud-native solutions on AWS — including LangGraph-powered agents for CloudWatch monitoring, " +
+                "Designed and deployed cloud-native solutions on AWS — including LangGraph-powered agents for CloudWatch monitoring, " +
                 "containerised microservices with Docker and ECS, CI/CD pipelines with GitHub Actions, " +
                 "and MLOps infrastructure for AI-driven products.",
         },
@@ -72,11 +81,11 @@ const INFO = {
     hero: {
         name: "Aditya Dey",
         typewriterStrings: [
-            "Backend Engineer",
-            "Cloud Engineer",
+            "Backend Developer (AI)",
             "Voice AI Builder",
-            "MLOps Engineer",
+            "LangGraph Engineer",
             "Python Specialist",
+            "Cloud Engineer",
         ],
     },
 
