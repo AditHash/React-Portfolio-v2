@@ -38,11 +38,17 @@ const itemVariants = {
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60, damping: 20 } },
 };
 
+const heroImages = [
+    "image1.jpg", "image2.jpg", "image3.png", "image4.png",
+    "image5.png", "image6.png", "image7.png", "image8.png",
+];
+
 const Homepage = () => {
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
     const currentSEO = SEO.find((item) => item.page === "home");
     const [featuredProject, ...restProjects] = INFO.projects;
+    const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
 
     return (
         <MainLayout>
@@ -179,7 +185,7 @@ const Homepage = () => {
                             />
                             <div className="absolute -inset-[3px] bg-gradient-to-tr from-sky-400 to-blue-600 dark:from-red-500 dark:to-rose-600 rounded-3xl opacity-70 blur-[2px]" />
                             <Avatar className="w-full h-full rounded-3xl relative z-10 border border-white/10">
-                                <AvatarImage src="image2.jpg" alt="Aditya Dey" className="object-cover" />
+                                <AvatarImage src={randomImage} alt="Aditya Dey" className="object-cover" />
                                 <AvatarFallback className="text-6xl rounded-3xl bg-gradient-to-br from-sky-500 to-blue-600 dark:from-red-600 dark:to-rose-600 text-white font-black">
                                     AD
                                 </AvatarFallback>
