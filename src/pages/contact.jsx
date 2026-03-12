@@ -56,6 +56,24 @@ const Contact = () => {
             color: "text-sky-500",
             bg: "bg-sky-500/10",
         },
+        {
+            icon: <Instagram className="h-5 w-5" />,
+            title: "Instagram",
+            description: "Photography & life",
+            value: "@aditya.spx",
+            link: INFO.socials.instagram,
+            color: "text-pink-500",
+            bg: "bg-pink-500/10",
+        },
+        {
+            icon: <Gamepad2 className="h-5 w-5" />,
+            title: "Steam",
+            description: "Gaming profile",
+            value: "adityadragon",
+            link: INFO.socials.steam,
+            color: "text-indigo-500",
+            bg: "bg-indigo-500/10",
+        },
     ];
 
     return (
@@ -95,7 +113,7 @@ const Contact = () => {
                 </motion.div>
 
                 {/* Contact cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {contactMethods.map((method, index) => (
                         <motion.div
                             key={index}
@@ -128,27 +146,6 @@ const Contact = () => {
                     ))}
                 </div>
 
-                {/* Also active on */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="text-center space-y-4"
-                >
-                    <p className="text-muted-foreground text-sm">Also active on</p>
-                    <div className="flex justify-center gap-3">
-                        <Button variant="outline" size="icon" className="h-11 w-11 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all" asChild>
-                            <a href={INFO.socials.instagram} target="_blank" rel="noreferrer">
-                                <Instagram className="h-5 w-5 text-pink-500" />
-                            </a>
-                        </Button>
-                        <Button variant="outline" size="icon" className="h-11 w-11 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all" asChild>
-                            <a href={INFO.socials.steam} target="_blank" rel="noreferrer">
-                                <Gamepad2 className="h-5 w-5 text-indigo-500" />
-                            </a>
-                        </Button>
-                    </div>
-                </motion.div>
 
             </div>
         </MainLayout>
