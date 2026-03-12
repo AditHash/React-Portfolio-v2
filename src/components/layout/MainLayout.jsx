@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion, useScroll, useSpring } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { CommandMenu } from "@/components/command-menu";
 
 const MainLayout = ({ children }) => {
     const { scrollYProgress } = useScroll();
+    const location = useLocation();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
@@ -34,7 +36,15 @@ const MainLayout = ({ children }) => {
 
             <Navbar />
             <main className="flex-1 pt-16 z-10 relative">
-                {children}
+                <motion.div
+                    key={location.pathname}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.28, ease: "easeInOut" }}
+                >
+                    {children}
+                </motion.div>
             </main>
             <Footer />
             <CommandMenu />

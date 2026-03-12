@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Instagram, ArrowRight, Gamepad2 } from "lucide-react";
 
@@ -7,6 +6,8 @@ import MainLayout from "@/components/layout/MainLayout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import SEOHead from "@/components/seo-head";
+import { SpotlightCard } from "@/components/ui/animated";
 
 import INFO from "@/data/user";
 import SEO from "@/data/seo";
@@ -59,11 +60,12 @@ const Contact = () => {
 
     return (
         <MainLayout>
-            <Helmet>
-                <title>{`Contact | ${INFO.main.title}`}</title>
-                <meta name="description" content={currentSEO.description} />
-                <meta name="keywords" content={currentSEO.keywords.join(", ")} />
-            </Helmet>
+            <SEOHead
+                title={currentSEO.title}
+                description={currentSEO.description}
+                keywords={currentSEO.keywords}
+                path="/contact"
+            />
 
             <div className="container max-w-screen-lg mx-auto px-4 md:px-8 py-12 md:py-20 space-y-14">
 
@@ -101,6 +103,7 @@ const Contact = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                         >
+                            <SpotlightCard className="rounded-xl h-full">
                             <a href={method.link} target="_blank" rel="noreferrer" className="block h-full">
                                 <Card className="h-full hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 group cursor-pointer bg-card border-border/60">
                                     <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-3">
@@ -120,6 +123,7 @@ const Contact = () => {
                                     </CardContent>
                                 </Card>
                             </a>
+                            </SpotlightCard>
                         </motion.div>
                     ))}
                 </div>

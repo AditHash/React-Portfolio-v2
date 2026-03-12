@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -10,6 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+
+import SEOHead from "@/components/seo-head";
+import { SpotlightCard } from "@/components/ui/animated";
 
 import INFO from "@/data/user";
 import SEO from "@/data/seo";
@@ -40,11 +42,12 @@ const About = () => {
 
     return (
         <MainLayout>
-            <Helmet>
-                <title>{`About | ${INFO.main.title}`}</title>
-                <meta name="description" content={currentSEO.description} />
-                <meta name="keywords" content={currentSEO.keywords.join(", ")} />
-            </Helmet>
+            <SEOHead
+                title={currentSEO.title}
+                description={currentSEO.description}
+                keywords={currentSEO.keywords}
+                path="/about"
+            />
 
             <div className="container max-w-screen-xl mx-auto px-4 md:px-8 py-12 space-y-20">
 
@@ -212,6 +215,7 @@ const About = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.08 }}
                             >
+                                <SpotlightCard className="rounded-xl h-full">
                                 <Card className="bg-card border-border/60 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-300 h-full group">
                                     <CardHeader className="pb-3">
                                         <CardTitle className="text-sm font-semibold flex items-center gap-2 text-primary">
@@ -236,6 +240,7 @@ const About = () => {
                                         </div>
                                     </CardContent>
                                 </Card>
+                                </SpotlightCard>
                             </motion.div>
                         ))}
                     </div>

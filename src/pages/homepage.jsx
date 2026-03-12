@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { ArrowRight, Github, Download, Briefcase, ExternalLink } from "lucide-react";
+import { ArrowRight, Github, Download, Briefcase, ExternalLink, ChevronDown } from "lucide-react";
 
 import MainLayout from "@/components/layout/MainLayout";
 import {
@@ -13,6 +12,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import SEOHead from "@/components/seo-head";
+import { SpotlightCard, AnimatedCounter, WordReveal } from "@/components/ui/animated";
 
 import INFO from "@/data/user";
 import SEO from "@/data/seo";
@@ -45,16 +46,17 @@ const Homepage = () => {
 
     return (
         <MainLayout>
-            <Helmet>
-                <title>{INFO.main.title}</title>
-                <meta name="description" content={currentSEO.description} />
-                <meta name="keywords" content={currentSEO.keywords.join(", ")} />
-            </Helmet>
+            <SEOHead
+                title={currentSEO.title}
+                description={currentSEO.description}
+                keywords={currentSEO.keywords}
+                path="/"
+            />
 
             <div className="container max-w-screen-xl mx-auto px-4 md:px-8 py-12 space-y-28">
 
                 {/* ── HERO ─────────────────────────────────────────── */}
-                <section className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16 min-h-[80vh]">
+                <section className="relative flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16 min-h-[80vh]">
 
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -103,15 +105,15 @@ const Homepage = () => {
                         {/* Stats */}
                         <div className="flex items-center gap-6 md:gap-8 pt-1">
                             {[
-                                { value: "2+", label: "Yrs Experience" },
-                                { value: "20+", label: "Projects Built" },
-                                { value: "5",  label: "Tech Areas" },
+                                { to: 2,  suffix: "+", label: "Yrs Experience" },
+                                { to: 20, suffix: "+", label: "Projects Built"  },
+                                { to: 5,  suffix: "",  label: "Tech Areas"      },
                             ].map((stat, i) => (
                                 <React.Fragment key={stat.label}>
                                     {i > 0 && <div className="h-8 w-px bg-border" />}
                                     <div>
                                         <div className="text-2xl md:text-3xl font-black bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
-                                            {stat.value}
+                                            <AnimatedCounter to={stat.to} suffix={stat.suffix} />
                                         </div>
                                         <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
                                     </div>
@@ -184,6 +186,17 @@ const Homepage = () => {
                             </Avatar>
                         </motion.div>
                     </motion.div>
+                    {/* Scroll indicator */}
+                    <motion.div
+                        className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1 text-muted-foreground/50"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.5 }}
+                    >
+                        <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+                            <ChevronDown className="h-5 w-5" />
+                        </motion.div>
+                    </motion.div>
                 </section>
 
                 {/* ── SKILLS ───────────────────────────────────────── */}
@@ -195,7 +208,9 @@ const Homepage = () => {
                         className="space-y-3 text-center"
                     >
                         <Badge variant="outline" className="px-4 py-1 border-primary/40 text-primary">Tech Stack</Badge>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Tools of the Trade</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                            <WordReveal text="Tools of the Trade" />
+                        </h2>
                         <p className="text-muted-foreground max-w-xl mx-auto">
                             Technologies I use to build fast, reliable, and scalable systems.
                         </p>
@@ -210,6 +225,7 @@ const Homepage = () => {
                     >
                         {Object.entries(INFO.skills).map(([key, category]) => (
                             <motion.div key={key} variants={itemVariants}>
+                                <SpotlightCard className="rounded-xl h-full">
                                 <Card className="h-full border-border/60 bg-card hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group">
                                     <CardHeader className="flex flex-row items-center gap-3 pb-3">
                                         <div className="p-2.5 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shrink-0">
@@ -232,6 +248,7 @@ const Homepage = () => {
                                         </div>
                                     </CardContent>
                                 </Card>
+                                </SpotlightCard>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -248,7 +265,9 @@ const Homepage = () => {
                         className="space-y-3 text-center"
                     >
                         <Badge variant="outline" className="px-4 py-1 border-primary/40 text-primary">Portfolio</Badge>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Featured Projects</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                            <WordReveal text="Featured Projects" />
+                        </h2>
                         <p className="text-muted-foreground max-w-xl mx-auto">
                             Production-grade systems spanning event-driven backends, cloud tooling, and voice AI.
                         </p>
