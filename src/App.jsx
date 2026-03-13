@@ -21,6 +21,12 @@ function App() {
         }
     }, []);
 
+    useEffect(() => {
+        if (TRACKING_ID !== "") {
+            ReactGA.send({ hitType: "pageview", page: location.pathname });
+        }
+    }, [location]);
+
     return (
         <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
             <div className="App">
