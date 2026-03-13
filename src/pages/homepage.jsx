@@ -166,7 +166,7 @@ const Homepage = () => {
                         </motion.div>
                     </motion.div>
 
-                    {/* Avatar */}
+                    {/* Hero Image */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -174,9 +174,9 @@ const Homepage = () => {
                         className="lg:w-2/5 flex justify-center"
                     >
                         <motion.div
-                            animate={{ y: [0, -14, 0] }}
+                            animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="relative w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80"
+                            className="relative w-full max-w-sm lg:max-w-md"
                         >
                             <motion.div
                                 animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.1, 1] }}
@@ -184,12 +184,11 @@ const Homepage = () => {
                                 className="absolute -inset-8 bg-gradient-to-tr from-sky-400 to-blue-600 dark:from-cyan-400 dark:to-teal-600 rounded-3xl blur-3xl"
                             />
                             <div className="absolute -inset-[3px] bg-gradient-to-tr from-sky-400 to-blue-600 dark:from-cyan-400 dark:to-teal-600 rounded-3xl opacity-70 blur-[2px]" />
-                            <Avatar className="w-full h-full rounded-3xl relative z-10 border border-white/10">
-                                <AvatarImage src={randomImage} alt="Aditya Dey" className="object-cover" />
-                                <AvatarFallback className="text-6xl rounded-3xl bg-gradient-to-br from-sky-500 to-blue-600 dark:from-cyan-500 dark:to-teal-600 text-white font-black">
-                                    AD
-                                </AvatarFallback>
-                            </Avatar>
+                            <img
+                                src={randomImage}
+                                alt="Aditya Dey"
+                                className="relative z-10 w-full h-auto max-h-[600px] object-cover object-top rounded-3xl border border-white/10 shadow-2xl"
+                            />
                         </motion.div>
                     </motion.div>
                     {/* Scroll indicator */}
