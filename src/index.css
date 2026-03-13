@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "./data/styles.css";
 @config "../tailwind.config.js";
 
@@ -34,31 +34,31 @@
   }
 
   .dark {
-    /* Dark: true black + red */
+    /* Dark: true black + cyan (harmonizes with DarkVeil background) */
     --background: 0 0% 3%;
     --foreground: 0 0% 96%;
-    --card: 0 0% 6%;
+    --card: 210 20% 7%;
     --card-foreground: 0 0% 96%;
-    --popover: 0 0% 6%;
+    --popover: 210 20% 7%;
     --popover-foreground: 0 0% 96%;
-    --primary: 0 72% 51%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 11%;
+    --primary: 185 90% 52%;
+    --primary-foreground: 210 40% 5%;
+    --secondary: 210 15% 12%;
     --secondary-foreground: 0 0% 96%;
-    --muted: 0 0% 11%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 11%;
-    --accent-foreground: 0 72% 60%;
+    --muted: 210 15% 12%;
+    --muted-foreground: 215 16% 58%;
+    --accent: 210 15% 12%;
+    --accent-foreground: 185 90% 60%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 0 72% 51%;
-    --chart-1: 220 70% 50%;
+    --border: 210 15% 16%;
+    --input: 210 15% 16%;
+    --ring: 185 90% 52%;
+    --chart-1: 185 90% 52%;
     --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
+    --chart-3: 220 70% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-5: 140 70% 50%;
   }
 
   * {
@@ -68,6 +68,15 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .dark [class*="rounded"][class*="border"] {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   ::-webkit-scrollbar { width: 5px; }

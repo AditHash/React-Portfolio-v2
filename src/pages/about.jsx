@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Stack from "@/components/ui/Stack";
 import { MapPin, Briefcase, Code2, Camera, Download } from "lucide-react";
 
 import MainLayout from "@/components/layout/MainLayout";
@@ -16,16 +15,17 @@ import { SpotlightCard, AnimatedCounter } from "@/components/ui/animated";
 import INFO from "@/data/user";
 import SEO from "@/data/seo";
 
-const carouselImages = [
-    { src: "image1.jpg",  alt: "Photo 1" },
-    { src: "image2.jpg",  alt: "Photo 2" },
-    { src: "image3.png",  alt: "Photo 3" },
-    { src: "image4.png",  alt: "Photo 4" },
-    { src: "image5.png",  alt: "Photo 5" },
-    { src: "image6.png",  alt: "Photo 6" },
-    { src: "image7.png",  alt: "Photo 7" },
-    { src: "image8.png",  alt: "Photo 8" },
-];
+const stackCards = [
+    "image1.jpg", "image2.jpg", "image3.png", "image4.png",
+    "image5.png", "image6.png", "image7.png", "image8.png",
+].map((src, i) => (
+    <img
+        key={i}
+        src={src}
+        alt={`Photo ${i + 1}`}
+        className="w-full h-full object-cover pointer-events-none"
+    />
+));
 
 const About = () => {
     useEffect(() => {
@@ -63,7 +63,7 @@ const About = () => {
                             <Badge variant="outline" className="px-4 py-1 border-primary/40 text-primary">About Me</Badge>
                             <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1]">
                                 I'm{" "}
-                                <span className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-cyan-400 dark:to-teal-500 bg-clip-text text-transparent">
                                     {INFO.main.name}
                                 </span>
                                 <span className="text-muted-foreground text-2xl md:text-3xl font-medium block mt-2">
@@ -82,7 +82,7 @@ const About = () => {
                                     <div className="text-primary mb-1.5 group-hover:scale-110 transition-transform duration-300">
                                         {stat.icon}
                                     </div>
-                                    <div className="text-2xl font-black bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
+                                    <div className="text-2xl font-black bg-gradient-to-r from-sky-500 to-blue-600 dark:from-cyan-400 dark:to-teal-500 bg-clip-text text-transparent">
                                         {stat.to !== null
                                             ? <AnimatedCounter to={stat.to} suffix={stat.suffix} />
                                             : stat.static}
@@ -102,7 +102,7 @@ const About = () => {
                         {/* Action buttons */}
                         <div className="flex flex-wrap gap-3">
                             <Button
-                                className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-600 dark:to-rose-600 hover:opacity-90 text-white border-0 shadow-lg shadow-primary/20 gap-2 transition-all duration-300"
+                                className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-cyan-500 dark:to-teal-600 hover:opacity-90 text-white border-0 shadow-lg shadow-primary/20 gap-2 transition-all duration-300"
                                 asChild
                             >
                                 <a href={INFO.main.cv} target="_blank" rel="noreferrer">
@@ -119,33 +119,24 @@ const About = () => {
                         </div>
                     </motion.div>
 
-                    {/* Photo carousel */}
+                    {/* Photo stack */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="relative"
+                        className="relative flex justify-center items-center"
                     >
-                        <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/60 ring-1 ring-primary/10 bg-muted/30">
-                            <Carousel
-                                showArrows
-                                autoPlay
-                                infiniteLoop
-                                showThumbs={false}
-                                showStatus={false}
-                                interval={3500}
-                                transitionTime={600}
-                            >
-                                {carouselImages.map((img, i) => (
-                                    <div key={i} className="flex items-center justify-center p-2 bg-muted/20">
-                                        <img
-                                            src={img.src}
-                                            alt={img.alt}
-                                            className="w-full h-auto max-h-[600px] object-contain"
-                                        />
-                                    </div>
-                                ))}
-                            </Carousel>
+                        <div className="relative w-[320px] h-[420px] md:w-[380px] md:h-[480px]">
+                            <Stack
+                                cards={stackCards}
+                                autoplay
+                                autoplayDelay={2500}
+                                randomRotation
+                                sensitivity={150}
+                                sendToBackOnClick
+                                pauseOnHover
+                                animationConfig={{ stiffness: 200, damping: 22 }}
+                            />
                         </div>
                     </motion.div>
                 </section>

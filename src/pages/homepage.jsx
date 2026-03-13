@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import Typewriter from "typewriter-effect";
+import RotatingText from "@/components/ui/RotatingText";
 import { ArrowRight, Github, Download, Briefcase, ExternalLink, ChevronDown } from "lucide-react";
 
 import MainLayout from "@/components/layout/MainLayout";
@@ -87,19 +87,19 @@ const Homepage = () => {
                         <div className="space-y-3">
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
                                 Hi, I'm{" "}
-                                <span className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-cyan-400 dark:to-teal-500 bg-clip-text text-transparent">
                                     Aditya Dey
                                 </span>
                             </h1>
-                            <div className="text-xl md:text-2xl font-medium text-muted-foreground min-h-[2rem]">
-                                <Typewriter
-                                    options={{
-                                        strings: INFO.hero.typewriterStrings,
-                                        autoStart: true,
-                                        loop: true,
-                                        delay: 50,
-                                        deleteSpeed: 30,
-                                    }}
+                            <div className="text-xl md:text-2xl font-medium text-muted-foreground flex items-center gap-2 flex-wrap min-h-[2.5rem]">
+                                <span>I'm a</span>
+                                <RotatingText
+                                    texts={INFO.hero.typewriterStrings}
+                                    mainClassName="px-3 py-0.5 bg-primary/15 dark:bg-primary/20 rounded-lg text-primary font-semibold overflow-hidden"
+                                    staggerDuration={0.025}
+                                    staggerFrom="first"
+                                    splitBy="characters"
+                                    rotationInterval={3000}
                                 />
                             </div>
                         </div>
@@ -118,7 +118,7 @@ const Homepage = () => {
                                 <React.Fragment key={stat.label}>
                                     {i > 0 && <div className="h-8 w-px bg-border" />}
                                     <div>
-                                        <div className="text-2xl md:text-3xl font-black bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-500 dark:to-rose-500 bg-clip-text text-transparent">
+                                        <div className="text-2xl md:text-3xl font-black bg-gradient-to-r from-sky-500 to-blue-600 dark:from-cyan-400 dark:to-teal-500 bg-clip-text text-transparent">
                                             <AnimatedCounter to={stat.to} suffix={stat.suffix} />
                                         </div>
                                         <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
@@ -136,7 +136,7 @@ const Homepage = () => {
                         >
                             <Button
                                 size="lg"
-                                className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-600 dark:to-rose-600 hover:opacity-90 text-white border-0 shadow-lg shadow-primary/20 gap-2 transition-all duration-300"
+                                className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-cyan-500 dark:to-teal-600 hover:opacity-90 text-white border-0 shadow-lg shadow-primary/20 gap-2 transition-all duration-300"
                                 asChild
                             >
                                 <a href={`mailto:${INFO.main.email}`}>
@@ -181,12 +181,12 @@ const Homepage = () => {
                             <motion.div
                                 animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.1, 1] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -inset-8 bg-gradient-to-tr from-sky-400 to-blue-600 dark:from-red-500 dark:to-rose-600 rounded-3xl blur-3xl"
+                                className="absolute -inset-8 bg-gradient-to-tr from-sky-400 to-blue-600 dark:from-cyan-400 dark:to-teal-600 rounded-3xl blur-3xl"
                             />
-                            <div className="absolute -inset-[3px] bg-gradient-to-tr from-sky-400 to-blue-600 dark:from-red-500 dark:to-rose-600 rounded-3xl opacity-70 blur-[2px]" />
+                            <div className="absolute -inset-[3px] bg-gradient-to-tr from-sky-400 to-blue-600 dark:from-cyan-400 dark:to-teal-600 rounded-3xl opacity-70 blur-[2px]" />
                             <Avatar className="w-full h-full rounded-3xl relative z-10 border border-white/10">
                                 <AvatarImage src={randomImage} alt="Aditya Dey" className="object-cover" />
-                                <AvatarFallback className="text-6xl rounded-3xl bg-gradient-to-br from-sky-500 to-blue-600 dark:from-red-600 dark:to-rose-600 text-white font-black">
+                                <AvatarFallback className="text-6xl rounded-3xl bg-gradient-to-br from-sky-500 to-blue-600 dark:from-cyan-500 dark:to-teal-600 text-white font-black">
                                     AD
                                 </AvatarFallback>
                             </Avatar>
@@ -493,7 +493,7 @@ const Homepage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500/8 via-blue-500/6 to-sky-400/8 dark:from-red-500/8 dark:via-rose-500/6 dark:to-red-400/8 border border-primary/20 p-8 md:p-16 text-center space-y-6"
+                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500/8 via-blue-500/6 to-sky-400/8 dark:from-cyan-500/8 dark:via-teal-500/6 dark:to-cyan-400/8 border border-primary/20 p-8 md:p-16 text-center space-y-6"
                     >
                         <div className="absolute -top-20 -right-20 w-56 h-56 bg-violet-500/15 rounded-full blur-3xl pointer-events-none" />
                         <div className="absolute -bottom-20 -left-20 w-56 h-56 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -512,7 +512,7 @@ const Homepage = () => {
                         <div className="relative flex flex-wrap justify-center gap-3">
                             <Button
                                 size="lg"
-                                className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-red-600 dark:to-rose-600 hover:opacity-90 text-white border-0 shadow-lg shadow-primary/20 gap-2 transition-all duration-300"
+                                className="bg-gradient-to-r from-sky-500 to-blue-600 dark:from-cyan-500 dark:to-teal-600 hover:opacity-90 text-white border-0 shadow-lg shadow-primary/20 gap-2 transition-all duration-300"
                                 asChild
                             >
                                 <a href={`mailto:${INFO.main.email}`}>

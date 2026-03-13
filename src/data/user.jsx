@@ -1,12 +1,12 @@
 import React from "react";
-import { Code2, Server, Database, Cloud, Terminal } from "lucide-react";
+import { Code2, Server, Database, Cloud, Terminal, Shield } from "lucide-react";
 import {
-    SiPython, SiFlask, SiFastapi, SiCplusplus, SiRust, SiJavascript,
+    SiPython, SiFlask, SiFastapi, SiCplusplus,
     SiMysql, SiPostgresql, SiMongodb, SiRedis,
-    SiDocker, SiNginx, SiGithubactions, SiApachekafka,
-    SiScikitlearn, SiPytorch
+    SiDocker,
+    SiTerraform, SiHuggingface, SiGoogle
 } from "react-icons/si";
-import { FaAws, FaLinux, FaGit } from "react-icons/fa";
+import { FaAws, FaGit } from "react-icons/fa";
 
 const INFO = {
     main: {
@@ -94,54 +94,62 @@ const INFO = {
             title: "Backend Development",
             icon: <Server className="h-5 w-5" />,
             items: [
-                { name: "Python",    icon: <SiPython className="text-blue-500" /> },
-                { name: "FastAPI",   icon: <SiFastapi className="text-teal-500" /> },
-                { name: "Flask",     icon: <SiFlask className="text-foreground" /> },
-                { name: "REST APIs", icon: <Cloud className="text-sky-500" /> },
-                { name: "Kafka",     icon: <SiApachekafka className="text-gray-500" /> },
+                { name: "Python",        icon: <SiPython className="text-blue-500" /> },
+                { name: "FastAPI",       icon: <SiFastapi className="text-teal-500" /> },
+                { name: "Flask",         icon: <SiFlask className="text-foreground" /> },
+                { name: "Pydantic",      icon: <Shield className="h-4 w-4 text-red-500" /> },
+                { name: "REST APIs",     icon: <Cloud className="h-4 w-4 text-sky-500" /> },
+                { name: "Microservices", icon: <Server className="h-4 w-4 text-purple-500" /> },
             ],
         },
         systems: {
-            title: "Systems & Languages",
+            title: "Languages & Core",
             icon: <Code2 className="h-5 w-5" />,
             items: [
-                { name: "C++",        icon: <SiCplusplus className="text-blue-600" /> },
-                { name: "Rust",       icon: <SiRust className="text-orange-500" /> },
-                { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
-                { name: "TypeScript", icon: <Code2 className="text-blue-500" /> },
+                { name: "C++",   icon: <SiCplusplus className="text-blue-600" /> },
+                { name: "SQL",   icon: <Database className="h-4 w-4 text-blue-400" /> },
+                { name: "NoSQL", icon: <Database className="h-4 w-4 text-green-500" /> },
             ],
         },
         database: {
-            title: "Databases",
+            title: "Databases & Vectors",
             icon: <Database className="h-5 w-5" />,
             items: [
                 { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-400" /> },
                 { name: "MongoDB",    icon: <SiMongodb className="text-green-500" /> },
-                { name: "Redis",      icon: <SiRedis className="text-red-500" /> },
                 { name: "MySQL",      icon: <SiMysql className="text-blue-500" /> },
+                { name: "Qdrant",     icon: <Database className="h-4 w-4 text-purple-500" /> },
+                { name: "OpenSearch", icon: <Database className="h-4 w-4 text-blue-600" /> },
+                { name: "Redis",      icon: <SiRedis className="text-red-500" /> },
             ],
         },
         devops: {
-            title: "DevOps & Cloud",
+            title: "Cloud & DevOps",
             icon: <Cloud className="h-5 w-5" />,
             items: [
-                { name: "AWS",            icon: <FaAws className="text-orange-500" /> },
-                { name: "Docker",         icon: <SiDocker className="text-blue-500" /> },
-                { name: "GitHub Actions", icon: <SiGithubactions className="text-blue-600" /> },
-                { name: "Nginx",          icon: <SiNginx className="text-green-600" /> },
-                { name: "Linux",          icon: <FaLinux className="text-foreground" /> },
-                { name: "Git",            icon: <FaGit className="text-red-500" /> },
+                { name: "AWS (ECS, ECR, Lambda, S3, Textract, Bedrock)", icon: <FaAws className="text-orange-500" /> },
+                { name: "Docker",    icon: <SiDocker className="text-blue-500" /> },
+                { name: "Terraform", icon: <SiTerraform className="text-purple-600" /> },
+                { name: "Git",       icon: <FaGit className="text-red-500" /> },
             ],
         },
         ai: {
-            title: "AI & ML",
+            title: "AI & LLM Ops",
             icon: <Terminal className="h-5 w-5" />,
             items: [
-                { name: "LangGraph",   icon: <Terminal className="text-green-500" /> },
-                { name: "LangChain",   icon: <Terminal className="text-green-600" /> },
-                { name: "RAG Systems", icon: <Terminal className="text-purple-500" /> },
-                { name: "scikit-learn",icon: <SiScikitlearn className="text-orange-500" /> },
-                { name: "PyTorch",     icon: <SiPytorch className="text-red-500" /> },
+                { name: "LangGraph",        icon: <Terminal className="h-4 w-4 text-green-500" /> },
+                { name: "LangChain",        icon: <Terminal className="h-4 w-4 text-green-600" /> },
+                { name: "RAG Pipelines",    icon: <Terminal className="h-4 w-4 text-purple-500" /> },
+                { name: "AWS Bedrock",      icon: <FaAws className="text-yellow-500" /> },
+                { name: "Google Vertex AI", icon: <SiGoogle className="text-blue-500" /> },
+                { name: "Groq",             icon: <Terminal className="h-4 w-4 text-orange-400" /> },
+                { name: "LangSmith",        icon: <Terminal className="h-4 w-4 text-blue-500" /> },
+                { name: "Crew AI",          icon: <Terminal className="h-4 w-4 text-red-400" /> },
+                { name: "n8n",              icon: <Terminal className="h-4 w-4 text-pink-500" /> },
+                { name: "LiveKit",          icon: <Terminal className="h-4 w-4 text-cyan-500" /> },
+                { name: "Strands SDK",      icon: <Terminal className="h-4 w-4 text-violet-500" /> },
+                { name: "Hugging Face",     icon: <SiHuggingface className="text-yellow-400" /> },
+                { name: "Embeddings",       icon: <Terminal className="h-4 w-4 text-pink-400" /> },
             ],
         },
     },
